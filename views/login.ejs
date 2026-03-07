@@ -33,15 +33,18 @@
 
     <!-- Login Form -->
     <form action="/home" method="post">
-      <input type="text" id="username" class="fadeIn second" 
+      <input type="text" id="username"
       name="Username" placeholder="Username" autocomplete="off"
- >
+ class="fadeIn second my-login-input">
  <small class="text-danger" id="usernameError"></small>
  <small class="text-danger" id="passwordError"></small>
-      <input type="text" id="password" class="fadeIn third"
+      <input type="password" id="password"
        name="Password" placeholder="Password"
              autocomplete="off" 
-style="-webkit-text-security: disc;">
+             class="fadeIn third my-login-input"
+>
+<label for="" >Show password</label>
+<input type="checkbox" class="btn btn-primary" onclick="showPassword()">
       <input type="submit" class="fadeIn fourth mt-5" value="Log In">
       <p class="lead">don't you have an account? <span><a href="/signup">signup here</a></span></p>
     </form>
@@ -82,6 +85,19 @@ function formValidation(e){
  
 
 }
+
+function showPassword(){
+
+  var passwordField = document.getElementById("password")
+  if(passwordField.type === "password"){
+    passwordField.type = "text"
+  }else{
+    passwordField.type = "password"
+  }
+}
+
+
+
 
 </script>
 </body>

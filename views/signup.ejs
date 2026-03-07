@@ -1,7 +1,7 @@
 
   <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/components/registrations/registration-10/assets/css/registration-10.css">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Registration 10 - Bootstrap Brain Component -->
 <section class="bg-light py-3 py-md-5 py-xl-8">
   <div class="container">
@@ -30,12 +30,19 @@
                   </div>
                 </div>
                 <div class="col-12">
+                  
                   <div class="form-floating mb-3">
+                    
                     <input type="password" class="form-control" name="Password" id="password" value="" placeholder="Password"  autocomplete="off">
+                    
                     <small class="text-danger" id="passwordError"></small>
+                    
                     <label for="password" class="form-label">Password</label>
+                    
                   </div>
+                  
                 </div>
+                    <i id="toggleIcon" class="fa fa-eye" onclick="togglePasswordVisibility()"> show password</i>
                                 <div class="col-12">
                   <div class="form-floating mb-3">
                     <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" value="" placeholder="confirm Password"  autocomplete="off">
@@ -137,5 +144,16 @@
       e.target.submit()
     }
     
+  }
+  function togglePasswordVisibility(){
+    let passwordField = document.getElementById("password")
+   let confirmPasswordField = document.getElementById("confirmPassword")
+    if(passwordField.type === "password" && confirmPasswordField.type === "password" ){
+      passwordField.type = "text"
+      confirmPasswordField.type  ="text"
+    }else{
+      passwordField.type = "password"
+      confirmPasswordField.type ="password"
+    }
   }
 </script>
