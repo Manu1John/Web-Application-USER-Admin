@@ -14,7 +14,9 @@
     <div class="fadeIn first">
     <h1 class="lead"> Login</h1>
     </div>
-
+    <%if(error){%>
+      <div class="alert alert-danger"><%=error%></div>
+      <%}%>
     <!-- Login Form -->
     <form action="/dashboard" method="post">
       <input type="text" id="login" class="fadeIn second" 
