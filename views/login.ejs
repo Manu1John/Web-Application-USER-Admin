@@ -1,0 +1,87 @@
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="/login.css">
+</head>
+<body>
+    
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+    <h1 class="lead m-3"> Login</h1>
+    </div>
+<% if (typeof error !== "undefined" && error) { %>
+  <div class="alert alert-danger"><%= error %></div>
+<% } %>
+  <% if (typeof success !== "undefined" && success) { %>
+              <div class="alert alert-success text-center">
+                <%= success %>
+              </div>
+            <% } %>
+            <% if (typeof success !== "undefined" && success) { %>
+  <script>
+    setTimeout(function () {
+      window.location.href = "/home";
+    }, 2000); // 2 seconds delay
+  </script>
+<% } %>
+
+    <!-- Login Form -->
+    <form action="/home" method="post">
+      <input type="text" id="username" class="fadeIn second" 
+      name="Username" placeholder="Username" autocomplete="off"
+ >
+ <small class="text-danger" id="usernameError"></small>
+ <small class="text-danger" id="passwordError"></small>
+      <input type="text" id="password" class="fadeIn third"
+       name="Password" placeholder="Password"
+             autocomplete="off" 
+style="-webkit-text-security: disc;">
+      <input type="submit" class="fadeIn fourth mt-5" value="Log In">
+      <p class="lead">don't you have an account? <span><a href="/signup">signup here</a></span></p>
+    </form>
+  </div>
+</div>
+<script>
+
+document.addEventListener("DOMContentLoaded",function(){
+  document.querySelector('form').addEventListener('submit',formValidation)
+
+})
+
+function formValidation(e){
+  e.preventDefault()
+  let username = document.getElementById("username").value.trim()
+  let password = document.getElementById('password').value.trim()
+
+  const usernameError = document.getElementById("usernameError")
+  const passwordError = document.getElementById("passwordError")
+
+  usernameError.textContent = ""
+  passwordError.textContent =""
+
+  let isValid = true
+
+  if(!username){
+    usernameError.textContent = "Username is required"
+    isValid = false
+  }else if(!password){
+    passwordError.textContent = "Password is required"
+    isValid = false
+  }
+
+  if(isValid){
+    e.target.submit()
+  }
+
+ 
+
+}
+
+</script>
+</body>
