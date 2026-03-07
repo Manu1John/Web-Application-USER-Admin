@@ -38,13 +38,13 @@ exports.getDashboard = async (req, res) => {
 };
 
 exports.createUser = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, Password } = req.body;
   // Check if user exists by email (usually safer than name)
-  if (!name || !email || !password || await User.findOne({ email })) return res.redirect("/dashboard");
+  if (!name || !email || !Password || await User.findOne({ email })) return res.redirect("/dashboard");
 
-  const hashedPassword = await bcrypt.hash(password, 10);
+  const hashedPassword = await bcrypt.hash(Password, 10);
   // Ensure "password" matches your Schema field name (lowercase 'p' is standard)
-  await User.create({ name, email, password: hashedPassword });
+  await User.create({ name, email, Password: hashedPassword });
   res.redirect("/dashboard");
 };
 
