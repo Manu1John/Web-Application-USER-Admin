@@ -14,12 +14,13 @@ async function authenticatedUser(req, res, next) {
   if (!req.session.users) {
     return res.redirect("/");
   }
-  const userExists = await User.findById(req.session.users.id);
-  if (!userExists) {
+  const user = await User.findById(req.session.users.id);
+  if (!user) {
     return req.session.destroy(() => {
       res.redirect("/");
     });
   }
+   req.user = user; // attach fresh DB data
   next();
 }
 

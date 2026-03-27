@@ -51,11 +51,11 @@ exports.postLogin = async (req, res) => {
     return res.render("login", { error: "Invalid username or password" });
   }
 
-  req.session.users = { id: user._id, name: user.name, email: user.email };
+  req.session.users = { id: user._id};
   res.render("login", { success: "login success" });
 };
 
-exports.getHome = (req, res) => res.render("home", { user: req.session.users });
+exports.getHome = (req, res) => res.render("home", { user: req.user });
 
 exports.logoutUser = (req, res) => {
   delete req.session.users;

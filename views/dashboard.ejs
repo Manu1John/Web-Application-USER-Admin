@@ -34,7 +34,11 @@
   </form>
 
   <hr>
-
+<% if (typeof error !== "undefined" && error) { %>
+  <div class="error-message">
+    <%= error %>
+  </div>
+<% } %>
   <!-- USER TABLE -->
   <table>
     <thead>

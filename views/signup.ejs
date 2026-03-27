@@ -42,7 +42,10 @@
                   </div>
                   
                 </div>
-                    <i id="toggleIcon" class="fa fa-eye" onclick="togglePasswordVisibility()"> show password</i>
+                <label for="">show password
+                  <input type="checkbox" onclick="togglePasswordVisibility()"> 
+                </label>
+                    
                                 <div class="col-12">
                   <div class="form-floating mb-3">
                     <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" value="" placeholder="confirm Password"  autocomplete="off">
@@ -110,12 +113,15 @@
       confirmPasswordError.textContent=""
 
       let isValid=true
-      if(!username ){
+      if(!username && !email && !password ){
         usernameError.textContent = "Username is required"
+        passwordError.textContent = "Password is required"
+        emailError.textContent = "Email is required"
         isValid = false
         
-      }else if(!email){
+      }else if(!email && !password){
         emailError.textContent = "Email is required"
+        passwordError.textContent = "Password is required"
         isValid = false
         
       }else if(!password){
@@ -126,6 +132,11 @@
         confirmPasswordError.textContent = "Password is required"
         isValid = false
         
+      }else if(!username && !password && !confirmPassword && !email){
+        usernameError.textContent = "username is required"
+        passwordError.textContent = "password is required"
+        emailError.textContent = "email is required"
+        isValid = false
       }
 
     if (password && !strongPassword.test(password)) {
